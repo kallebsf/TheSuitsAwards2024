@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="S__4_-removebg-preview.ico" type="image/x-icon">
+    <title>The Suits Awards 2024</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Botão flutuante no canto inferior direito */
+        .floating-audio-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ffcc00;
+            color: #000;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            z-index: 1000;
+        }
+        .floating-audio-button:hover {
+            background-color: #ffaa00;
+        }
+        .floating-audio-button span {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <h1><img src="S__4_-removebg-preview.ico" alt="Logo"> The Suits Awards 2024</h1>
+            <p>Votação para os maiores destaques do ano</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- Seção de Votação -->
+        <section class="voto-section">
+            <h2>Votação</h2>
+            <p>Escolha os seus favoritos para cada categoria diretamente abaixo:</p>
+            
+            <!-- Incorporando Google Forms -->
+            <iframe 
+                src="https://docs.google.com/forms/d/e/1FAIpQLSfUothWn8DTcNjCKqSymZHRWQfukxiS5rNZ62oNlHkmCRG0ZQ/viewform?embedded=true" 
+                width="100%" 
+                height="800" 
+                frameborder="0" 
+                marginheight="0" 
+                marginwidth="0">
+                Carregando…
+            </iframe>
+        </section>
+
+        <!-- Seção de Áudio -->
+        <section class="audio-section">
+            <h3>Ouça a trilha sonora do evento:</h3>
+            <audio id="audioPlayer" loop>
+                <source src="music/1 (1).mp3" type="audio/mp3">
+                Seu navegador não suporta o elemento de áudio.
+            </audio>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 The Suits Awards. Todos os direitos reservados.</p>
+            <p>Desenvolvido por Gustavo Kalleb e Chat GPT Baptista.</p>
+            <p>Sound Track por Jean Cerlos.</p>
+            <p>Toda a honra e glória seja dada ao Nosso Senhor Jesus Cristo!</p>
+        </div>
+    </footer>
+
+    <!-- Botão flutuante para controle de música -->
+    <button class="floating-audio-button" onclick="toggleAudio()">
+        <span id="audioIcon">🔇</span>
+    </button>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Controle de áudio
+        const audioPlayer = document.getElementById('audioPlayer');
+        const audioIcon = document.getElementById('audioIcon');
+
+        function toggleAudio() {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                audioIcon.textContent = '🔊';
+            } else {
+                audioPlayer.pause();
+                audioIcon.textContent = '🔇';
+            }
+        }
+
+        // Inicia a música automaticamente ao carregar a página
+        window.onload = () => {
+            audioPlayer.play().catch(() => {
+                console.log('Reprodução automática bloqueada pelo navegador.');
+            });
+        };
+    </script>
+</body>
+</html>
